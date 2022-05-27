@@ -11,5 +11,6 @@ namespace tp1.Logica
         public Omnibus(int cantPasajeros) : base(cantPasajeros)
         {
         }
+        public Omnibus() { }
     }
 }

@@ -11,6 +11,7 @@ namespace tp1.Logica
         public Taxi(int cantPasajeros) : base(cantPasajeros)
         {
         }
+        public Taxi() { }
 
         
     }

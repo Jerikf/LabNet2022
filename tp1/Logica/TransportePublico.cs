@@ -13,7 +13,11 @@ namespace tp1.Logica
         public TransportePublico(int cantPasajeros)
         {
             this.cantPasajeros = cantPasajeros;
-        }   
+        }
+        public TransportePublico() 
+        {
+            this.cantPasajeros = 0;
+        }
 
         public int CantPasajeros { get => cantPasajeros; set => cantPasajeros = value; }
 
