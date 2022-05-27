@@ -6,25 +6,10 @@ using System.Threading.Tasks;
 
 namespace tp1.Logica
 {
-    public abstract class Omnibus
+    public class Omnibus : TransportePublico
     {
-        protected int cantPasajeros;
-
-        public Omnibus(int cantPasajeros)
+        public Omnibus(int cantPasajeros) : base(cantPasajeros)
         {
-            this.cantPasajeros = cantPasajeros;
-        }   
-
-        public int CantPasajeros { get => cantPasajeros; set => cantPasajeros = value; }
-
-        public virtual void Avanzar()
-        {
-            Console.WriteLine("Avanzo");
         }
-        public virtual void Detenerse()
-        {
-            Console.WriteLine("Me detengo");
-        }
-
     }
 }

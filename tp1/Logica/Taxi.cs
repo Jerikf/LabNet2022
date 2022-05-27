@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace tp1.Logica
 {
-    public class Taxi : Omnibus
+    public class Taxi : TransportePublico
     {
         public Taxi(int cantPasajeros) : base(cantPasajeros)
         {
