@@ -43,13 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logica\ManejoDeTransporte.cs" />
+    <Compile Include="Logica\Constants.cs" />
+    <Compile Include="Logica\ManejadorDeTransporte.cs" />
     <Compile Include="Logica\TransportePublico.cs" />
     <Compile Include="Logica\Taxi.cs" />
     <Compile Include="Logica\Omnibus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vista\Menu.cs" />
+    <Compile Include="Commod\Menu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
