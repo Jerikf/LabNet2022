@@ -13,37 +13,34 @@ namespace Lab.EF.UI
     {
         static void Main(string[] args)
         {
-            CategoriesLogic categoriesLogic = new CategoriesLogic();
-
-            foreach (var item in categoriesLogic.GetAll())
+            Menu menu = new Menu();
+            int opcion = menu.obtenerOpcion();
+            while (opcion != 6)
             {
-                Console.WriteLine($"{item.CategoryID} - {item.CategoryName}");
-
+                switch (opcion)
+                {
+                    case 1:
+                        menu.MostrarShippers();
+                        break;
+                    case 2:
+                        menu.MostrarCategories();
+                        break;
+                    case 3:
+                        menu.CrearCategorie();
+                        break;
+                    case 4:
+                        menu.ActualizarCategorie();
+                        break;
+                    case 5:
+                        menu.DeleteCategorie();
+                        break;
+                    default:
+                        break;
+                }
+                opcion = menu.obtenerOpcion();
             }
 
-            categoriesLogic.Add(new Categories
-            {
-                CategoryName = "Repuesto",
-                Description = "prueba2"
-            });
-            /*
-            try
-            {
-                categoriesLogic.Delete(13);
-            }
-            catch (IdCategorieException e)
-            {
-
-                Console.WriteLine(e.Message);
-            }*/
-            
-
-            foreach (var item in categoriesLogic.GetAll())
-            {
-                Console.WriteLine($"{item.CategoryID} - {item.CategoryName}");
-
-            }
-            Console.ReadLine();
+            Console.WriteLine("HASTA LA PRÓXIMA!");
         }
     }
 }

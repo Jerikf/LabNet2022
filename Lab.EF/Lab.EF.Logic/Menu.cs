@@ -1,4 +1,5 @@
-﻿using Lab.EF.Entities;
+﻿using Lab.EF.Common;
+using Lab.EF.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,6 @@ namespace Lab.EF.Logic
                 mostrarMenu();
                 opcionUsuario = Console.ReadLine();
             }
-
             return valor;
         }
 
@@ -62,11 +62,9 @@ namespace Lab.EF.Logic
         public void CrearCategorie()
         {
             Console.WriteLine("---------------CREAR CATEGORIE--------------");
-            Console.WriteLine("INGRESE NOMBRE - MÁXIMO 15 CARACTERES:");
             string name = ObtenerNombreCategorie();
-           
-            Console.WriteLine("INGRESE UNA DESCRIPCIÓN : ");
-            string description = Console.ReadLine();
+            string description = ObtenerDescriptionCategorie();
+
             CategoriesLogic categoriesLogic = new CategoriesLogic();
             categoriesLogic.Add(new Categories()
             {
@@ -77,6 +75,72 @@ namespace Lab.EF.Logic
         }
         
 
+        public void ActualizarCategorie()
+        {
+            Console.WriteLine("------------------ACTUALIZAR CATEGORIE----------------");
+            CategoriesLogic categoriesLogic = new CategoriesLogic();
+            
+            int id = ObtenerIdCategorie();
+            string name = ObtenerNombreCategorie();
+            string description = ObtenerDescriptionCategorie();
+            Categories categorie = new Categories()
+            {
+                CategoryID = id,
+                CategoryName = name,
+                Description = description
+            };
+            try
+            {
+                categoriesLogic.Update(categorie);
+            }
+            catch(IdCategorieException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public void DeleteCategorie()
+        {
+            Console.WriteLine("------------------DELETE CATEGORIE----------------");
+            CategoriesLogic categoriesLogic = new CategoriesLogic();
+            int id = ObtenerIdCategorie();
+            try
+            {
+                categoriesLogic.Delete(id);
+            }
+            catch(IdCategorieException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("ERROR --> POSIBLEMENTE POR QUERER ELIMINAR UN ID QUE TIENE RELACIÓN CON OTRAS ENTITDADES");
+            }
+        }
+
+
+        private int ObtenerIdCategorie()
+        {
+            Console.WriteLine("INGRESE EL ID");
+            string opcion = Console.ReadLine();
+            int id = -1;
+            while (!Int32.TryParse(opcion, out id))
+            {
+                Console.WriteLine("UPS! --> INGRESE NUEVAMENTE EL ID");
+                opcion = Console.ReadLine();
+            }
+            return id;
+
+        }
+
+
+        private string ObtenerDescriptionCategorie()
+        {
+            Console.WriteLine("INGRESE UNA DESCRIPCIÓN : ");
+            string description = Console.ReadLine();
+            return description;
+
+        }
 
         private string ObtenerNombreCategorie()
         {
@@ -88,21 +152,6 @@ namespace Lab.EF.Logic
                 name = Console.ReadLine();
             }
             return name;
-        }
-
-        public void ActualizarCategorie()
-        {
-            Console.WriteLine("------------------ACTUALIZAR CATEGORIE----------------");
-            Console.WriteLine("INGRESE EL ID");
-            string opcion = Console.ReadLine();
-            int id = -1;
-            while (!Int32.TryParse(opcion, out id))
-            {
-                Console.WriteLine("UPS! --> INGRESE NUEVAMENTE EL ID");
-                opcion = Console.ReadLine();
-            }
-            string name = ObtenerNombreCategorie();
-
         }
 
     }
