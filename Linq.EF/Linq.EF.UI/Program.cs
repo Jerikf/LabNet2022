@@ -13,7 +13,7 @@ namespace Linq.EF.UI
         {
             Menu menu = new Menu();
             int opcion = menu.obtenerOpcion();
-            while (opcion != 8)
+            while (opcion != 14)
             {
                 switch (opcion)
                 {
@@ -37,6 +37,18 @@ namespace Linq.EF.UI
                         break;
                     case 7:
                         menu.MostrarClienteYOrder();
+                        break;
+                    case 8:
+                        menu.MostrarTresPrimerosClientesDeLaRegionWA();
+                        break;
+                    case 9:
+                        menu.MostrarProductosOrdenadorPorNombre();
+                        break;
+                    case 10:
+                        menu.MostrarProductosOrdenadosPorUnitStockDesc();
+                        break;
+                    case 12:
+                        menu.MostrarPrimerProduct();
                         break;
                     default:
                         break;

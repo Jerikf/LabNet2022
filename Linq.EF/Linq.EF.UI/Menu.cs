@@ -20,7 +20,11 @@ namespace Linq.EF.Logic
             Console.WriteLine("5. EJERCICIO 5                 |");
             Console.WriteLine("6. EJERCICIO 6                 |");
             Console.WriteLine("7. EJERCICIO 7                 |");
-            Console.WriteLine("8. SALIR                       |");
+            Console.WriteLine("8. EJERCICIO 8                 |");
+            Console.WriteLine("9. EJERCICIO 9                 |");
+            Console.WriteLine("10. EJERCICIO 10               |");
+            Console.WriteLine("12. EJERCICIO 12               |");
+            Console.WriteLine("14. SALIR                      |");
             Console.WriteLine("-------------------------------|");
         }
 
@@ -31,7 +35,7 @@ namespace Linq.EF.Logic
             Console.WriteLine("INGRESE UNA OPCIÓN : ");
             string opcionUsuario = Console.ReadLine();
             int valor = -1;
-            while (!Int32.TryParse(opcionUsuario, out valor) || !(valor > 0 && valor <= 8))
+            while (!Int32.TryParse(opcionUsuario, out valor) || !(valor > 0 && valor <= 14) || (valor == 13 || valor == 11))
             {
                 Console.WriteLine("UPS! INGRESÓ UNA OPCIÓN INCORRECTA !");
                 mostrarMenu();
@@ -119,7 +123,52 @@ namespace Linq.EF.Logic
 
         }
 
+        public void MostrarTresPrimerosClientesDeLaRegionWA()
+        {
+            Console.WriteLine("-------------------------EJERCICIO NRO 8--------------------");
+            CustomerLogic customerLogic = new CustomerLogic();
+            foreach (var customer in customerLogic.Get3FirstCustomerRegionWA())
+            {
+                Console.WriteLine($"{customer.CustomerID} - {customer.CompanyName} - {customer.ContactName} - {customer.ContactTitle} - {customer.Address} - {customer.City}");
+            }
+            Console.WriteLine("------------------------------------------------------------");
+
+        }
+
+        public void MostrarProductosOrdenadorPorNombre()
+        {
+            Console.WriteLine("-------------------------EJERCICIO NRO 9--------------------");
+            ProductsLogic productsLogic = new ProductsLogic();
+            foreach (var product in productsLogic.GetProductsOrderByName())
+            {
+                Console.WriteLine($"{product.ProductName} - {product.UnitPrice} - {product.UnitsInStock} - {product.UnitsOnOrder} - {product.ReorderLevel}");
+            }
+            Console.WriteLine("------------------------------------------------------------");
+
+        }
+
+        public void MostrarProductosOrdenadosPorUnitStockDesc()
+        {
+            Console.WriteLine("-------------------------EJERCICIO NRO 10--------------------");
+            ProductsLogic productsLogic = new ProductsLogic();
+            foreach (var product in productsLogic.GeteProductOrderByUnitStockDesc())
+            {
+                Console.WriteLine($"{product.ProductName} - {product.UnitPrice} - {product.UnitsInStock} - {product.UnitsOnOrder} - {product.ReorderLevel}");
+            }
+            Console.WriteLine("------------------------------------------------------------");
+
+        }
+
+        public void MostrarPrimerProduct()
+        {
+            Console.WriteLine("-------------------------EJERCICIO NRO 12--------------------");
+            ProductsLogic productsLogic = new ProductsLogic();
+            var product = productsLogic.GetFirstProduct();
+            Console.WriteLine($"{product.ProductName} - {product.UnitPrice} - {product.UnitsInStock} - {product.UnitsOnOrder} - {product.ReorderLevel}");
+            Console.WriteLine("------------------------------------------------------------");
+        }
        
+
 
 
 

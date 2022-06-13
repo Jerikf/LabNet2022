@@ -39,6 +39,11 @@ namespace Linq.EF.Logic
                         select new CustomersOrders(customer,  order);
             return query.ToList();
         }
+
+        public List<Customers> Get3FirstCustomerRegionWA()
+        {
+            return context.Customers.Where(c => c.Region == "WA").Take(3).ToList();
+        }
             
     }
 }
