@@ -23,7 +23,9 @@ namespace Linq.EF.Logic
             Console.WriteLine("8. EJERCICIO 8                 |");
             Console.WriteLine("9. EJERCICIO 9                 |");
             Console.WriteLine("10. EJERCICIO 10               |");
+            Console.WriteLine("11. EJERCICIO 11               |");
             Console.WriteLine("12. EJERCICIO 12               |");
+            Console.WriteLine("13. EJERCICIO 13               |");
             Console.WriteLine("14. SALIR                      |");
             Console.WriteLine("-------------------------------|");
         }
@@ -35,7 +37,7 @@ namespace Linq.EF.Logic
             Console.WriteLine("INGRESE UNA OPCIÓN : ");
             string opcionUsuario = Console.ReadLine();
             int valor = -1;
-            while (!Int32.TryParse(opcionUsuario, out valor) || !(valor > 0 && valor <= 14) || (valor == 13 || valor == 11))
+            while (!Int32.TryParse(opcionUsuario, out valor) || !(valor > 0 && valor <= 14))
             {
                 Console.WriteLine("UPS! INGRESÓ UNA OPCIÓN INCORRECTA !");
                 mostrarMenu();
@@ -159,6 +161,31 @@ namespace Linq.EF.Logic
 
         }
 
+        public void MostrarCategoriasAsociadosAProduct()
+        {
+            Console.WriteLine("-------------------------EJERCICIO NRO 11--------------------");
+            CategoriesLogic categoriesLogic = new CategoriesLogic();
+            foreach (var item in categoriesLogic.GetCategoriesAssocProducts())
+            {
+                Console.WriteLine($"LA CATEGORÍA : {item.Categories.CategoryName} TIENE ASOCIADO A LOS PRODUCTOS : ");
+                if (item.Products.Count > 0)
+                {
+                    foreach (var product in item.Products)
+                    {
+                        Console.WriteLine($"{product.ProductName} - {product.UnitPrice}");
+
+                    }
+                    Console.WriteLine("\n\n\n");
+                }
+                else
+                    Console.WriteLine("NINGÚN PRODUCTO ASOCIADO");
+                
+
+            }
+            Console.WriteLine("-------------------------------------------------------------");
+
+        }
+
         public void MostrarPrimerProduct()
         {
             Console.WriteLine("-------------------------EJERCICIO NRO 12--------------------");
@@ -166,6 +193,18 @@ namespace Linq.EF.Logic
             var product = productsLogic.GetFirstProduct();
             Console.WriteLine($"{product.ProductName} - {product.UnitPrice} - {product.UnitsInStock} - {product.UnitsOnOrder} - {product.ReorderLevel}");
             Console.WriteLine("------------------------------------------------------------");
+        }
+
+        public void MostrarClientesConCantOrderAsociadas()
+        {
+            Console.WriteLine("-------------------------EJERCICIO NRO 13--------------------");
+            CustomerLogic customerLogic = new CustomerLogic();
+            foreach (var customerOrder in customerLogic.GetCustomerWithCountOrdersAssociated())
+            {
+                Console.WriteLine($"{customerOrder.Customers.CompanyName} - {customerOrder.Customers.Region} ---- CANTIDAD ASOCIADO : {customerOrder.CountOrders}");
+            }
+            Console.WriteLine("------------------------------------------------------------");
+
         }
        
 

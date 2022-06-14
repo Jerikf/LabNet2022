@@ -47,8 +47,14 @@ namespace Linq.EF.UI
                     case 10:
                         menu.MostrarProductosOrdenadosPorUnitStockDesc();
                         break;
+                    case 11:
+                        menu.MostrarCategoriasAsociadosAProduct();
+                        break;
                     case 12:
                         menu.MostrarPrimerProduct();
+                        break;
+                    case 13:
+                        menu.MostrarClientesConCantOrderAsociadas();
                         break;
                     default:
                         break;

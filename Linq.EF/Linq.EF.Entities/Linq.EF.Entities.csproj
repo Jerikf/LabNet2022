@@ -51,7 +51,8 @@
     <Compile Include="Categories.cs" />
     <Compile Include="CustomerDemographics.cs" />
     <Compile Include="Customers.cs" />
-    <Compile Include="CustomersOrders.cs" />
+    <Compile Include="ViewModel\CategoriesProducts.cs" />
+    <Compile Include="ViewModel\CustomersOrders.cs" />
     <Compile Include="Employees.cs" />
     <Compile Include="Orders.cs" />
     <Compile Include="Order_Details.cs" />
@@ -61,10 +62,12 @@
     <Compile Include="Shippers.cs" />
     <Compile Include="Suppliers.cs" />
     <Compile Include="Territories.cs" />
+    <Compile Include="ViewModel\CustomerCountOrders.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
