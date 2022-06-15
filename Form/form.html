@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">   
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="js/javascript.js"></script>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark ">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">JerikF</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                  <a class="nav-link" href="#">About</a>
+                  <a class="nav-link" href="#">Solutions</a>
+                  <a class="nav-link active" href="#">Form</a>
+                </div>
+              </div>
+            </div>
+          </nav>      
+    </header>
+
+    <div class="container-portada">
+        <div class="capa-gradiente"></div>
+        <div class="container-details">
+            <div class="details">
+                <h1>Labs Mayo</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae blanditiis, 
+                    corporis esse ex quod et in aspernatur quasi sint molestias optio necessitatibus 
+                    quae deserunt numquam. Maxime quam reiciendis facere sapiente!</p>
+                    <button>Ver más detalles</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column justify-content-center align-items-center Form">
+        <div class= "title" style="color: black;"><h2>Informacion Personal</h2></div>
+        <!--Utilizo get para fines didacticos, no se deberìa usar puesto que la info lo pasa por la URL, LO IDEAL ES USAR EL MÈTODO POST-->
+        <form id = "formulario" action="show_data.html" target="_blank" method="get" autocomplete="off"> <!-- agrego target = blank para que me abra en otro enlace, y asì poder aplicar el limpiado el formulario(a findes didacticos) porque con submit si te abre el mismo enlace ya te limpia "a la hora de regresar a la pàgina "-->
+            <div>
+                <!--Las validaciones de tipo de datos se deberia hacer en el js(se puede aplicar expresiones regulares ) pero a fines didacticos como repsando lo hice acà-->
+                <div>
+                    <label for="firstName">Name:</label><br>
+                    <input type="text" name="name" id="name" minlength="3" maxlength="16" pattern="[a-zA-Z]+"> <!--Solo aceptarà un nombre-->
+
+                </div>
+
+                <div>
+                    <label for="lastName">Last Name:</label><br>
+                    <input type="text" name="lastName" id="lastName" pattern="[a-zA-Z\s]+" minlength="3" maxlength="20"> <!--Solo aceptarà uno o màs apellidos-->
+
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <label for="city">City:</label><br>
+                    <input type="text" id="city" name="city" pattern="[a-zA-Z\s]+" mnlength="4" maxlength="20">
+
+                </div>
+
+                <div>
+                    <label for="zip_code"  class="corrido_derecha">Zip Code:</label><br>
+                    <input type="text"  id="zip_code" name="zip_code" minlength="4" maxlength="10" pattern="[0-9]+">
+
+                </div>
+                    
+            </div>
+
+            <div>
+                <div>
+                    <label for="date">Birth Date(mm/dd/yyyy):</label><br>
+                    <input type="date" id="date" name="date">
+                </div>
+                <div id = "showAge">
+                    <p id="age"></p>
+                </div>
+                
+                <div class="gender">
+                    <label for="gender" class="corrido" >Gender: </label>
+                    <input type="radio" id="female" name="gender" value="gender">
+                    <label for="female">Female</label>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label>
+                    <input type="radio" id="other" name="other" value="other">
+                    <label for="other">Other</label>
+                </div>
+            </div>
+
+            <div>
+                <h5>Información adicional ?</h5>
+                <label for="empresa">Empresa:</label><br>
+                <input type="text" name="empresa" id="empresa" mnlength="3" maxlength="20" pattern="[a-zA-Z\s]+">
+
+            </div>
+            
+            <div class="cajaBoton">
+                <button type="submit">Submit</button>
+            </div>
+
+        </form>
+    
+    </div>
+    
+    
+</body>
+</html>
