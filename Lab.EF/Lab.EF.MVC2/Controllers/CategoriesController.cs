@@ -25,10 +25,31 @@ namespace Lab.EF.MVC2.Controllers
             return View(categoriesViews);
         }
 
-        [HttpPost]
         public ActionResult Insert()
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Insert(CategoriesView categorieView)
+        {
+            try
+            {
+                Categories categorieNew = new Categories
+                {
+                    CategoryName = categorieView.CategoryName,
+                    Description = categorieView.Description,
+                };
+
+                categoriesLogic.Add(categorieNew);
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index", "Error");
+            }
+        }
+
     }
 }

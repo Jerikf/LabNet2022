@@ -1,17 +1,67 @@
-﻿@{
-    Layout = null;
+﻿@model Lab.EF.MVC2.Models.CategoriesView
+@{
+    ViewBag.Title = "Categories Page";
 }
 
-<!DOCTYPE html>
+<div class="row" style="text-align: center">
+    <h1>Insert Categorie</h1>
+</div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-    
+<!--Nombre del método , nombre controlador, método del protocolo-->
+
+@using (Html.BeginForm("Insert", "Categories", FormMethod.Post,new { id = "formulario" }))
+{
+    <div class="row" style="margin-top:2vh;">
+
+        <div class="col-xs-offset-4" style="width:50%">
+
+            <label>Name: </label>
+            @Html.TextBoxFor(c => c.CategoryName, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(c=>c.CategoryName, null, new{@class = "danger"})
+            <label>Description: </label>
+            @Html.TextBoxFor(c => c.Description, "", new { @class = "form-control" })
+
+            <br/>
+            <div style="text-align:right;">
+                <button value="Guardar" class="btn btn-primary" id="Save" type="submit">Agregar</button>
+            </div>
+
+        </div>
     </div>
-</body>
-</html>
+
+}
+
+<script>
+    window.onload = start;
+    function start() {
+        document.getElementById("formulario").addEventListener("submit", sub);
+
+    };
+
+    const expresiones = {
+        name3: /^[a-zA-ZÁ-ü\s]{1,15}/,
+        name2: /^[a-zA-Z\s]+/,
+        name: /^[A-Z]+$/i
+    }
+
+    const sub = (e) => {
+        if (!document.getElementById("CategoryName").value) {
+            e.preventDefault();
+            alert("UPS! EL NAME NO PUEDE ESTAR VACÍO");
+            
+        } else {
+            if (!expresiones.name.test(document.getElementById("CategoryName").value)) {
+                e.preventDefault();
+                alert("UPS! NO ESTÁ CUMPLIENDO CON EL FORMATO");
+
+            } else if((document.getElementById("CategoryName").value).length > 15) {
+                e.preventDefault();
+                alert("UPS! EL NAME NO PUEDE TENER MÁS DE 15 DIGITOS");
+            }
+            
+            console.log("--------ENTRO AL ENVÍO-----------");
+        }
+    };
+</script>
+
+
