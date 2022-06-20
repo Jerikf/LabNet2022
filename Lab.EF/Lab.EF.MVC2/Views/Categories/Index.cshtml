@@ -1,0 +1,39 @@
+﻿@model List<Lab.EF.MVC2.Models.CategoriesView>
+@{
+    ViewBag.Title = "Categroies Page";
+}
+
+<h1>Listado de Categorias</h1>
+<div class="row" style="text-align: right; padding:13px;">
+    <a href="~/Views/Categories/nuevo" class="btn btn-primary">Nuevo</a>
+
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <table class="table-responsive table-dark table-bordered table-striped table-tamanio col-md-12">
+            <thead>
+                <tr>
+                    <th scope="col">Id Categories</th>
+                    <th scope="col">Name Categorie</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var categorie in Model)
+                {
+                    <tr>
+                        <td> @categorie.CategoriesId</td>
+                        <td>@categorie.CategoryName</td>
+                        <td>@categorie.CategoryName</td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+    
+
+</div>
+
