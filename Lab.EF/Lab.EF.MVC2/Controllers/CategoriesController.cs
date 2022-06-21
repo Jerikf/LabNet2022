@@ -1,4 +1,5 @@
-﻿using Lab.EF.Entities;
+﻿using Lab.EF.Common;
+using Lab.EF.Entities;
 using Lab.EF.Logic;
 using Lab.EF.MVC2.Models;
 using System;
@@ -18,7 +19,7 @@ namespace Lab.EF.MVC2.Controllers
             List<Categories> categories = categoriesLogic.GetAll();
             List<CategoriesView> categoriesViews = categories.Select(categorie => new CategoriesView
             {
-                CategoriesId = categorie.CategoryID,
+                CategoryID = categorie.CategoryID,
                 CategoryName = categorie.CategoryName,
                 Description = categorie.Description,
             }).ToList();
@@ -45,11 +46,71 @@ namespace Lab.EF.MVC2.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return RedirectToAction("Index", "Error");
             }
         }
 
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                categoriesLogic.Delete(id);
+                return RedirectToAction("Index");
+            }
+            catch (IdCategorieException e)
+            {
+                return View();
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("IdRelation", "Error");
+            }
+            
+        }
+
+        public ActionResult Update(int id)
+        {
+            try
+            {
+                Categories categorie = categoriesLogic.GetAll().Find(c => c.CategoryID == id);
+                CategoriesView categorieView = new CategoriesView()
+                {
+                    CategoryID = categorie.CategoryID,
+                    CategoryName = categorie.CategoryName,
+                    Description = categorie.Description
+                };
+                return View(categorieView);
+            }
+            catch (ArgumentNullException)
+            {
+                return RedirectToAction("Index", "Error");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Update(CategoriesView categorie)
+        {
+            try
+            {
+                Categories newCategorie = new Categories()
+                {
+                    CategoryID = categorie.CategoryID,
+                    CategoryName = categorie.CategoryName,
+                    Description = categorie.Description
+                };
+                categoriesLogic.Update(newCategorie);
+                return RedirectToAction("Index");
+            }
+            catch (IdCategorieException)
+            {
+                return RedirectToAction("Index", "Error");
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "Error");
+            }
+        }
     }
 }

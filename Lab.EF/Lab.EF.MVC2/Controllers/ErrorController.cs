@@ -13,5 +13,10 @@ namespace Lab.EF.MVC2.Controllers
         {
             return View();
         }
+
+        public ActionResult IdRelation()
+        {
+            return View();
+        }
     }
 }

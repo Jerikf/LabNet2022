@@ -16,22 +16,44 @@
                     <th scope="col">Id Categories</th>
                     <th scope="col">Name Categorie</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
 
             <tbody>
                 @foreach (var categorie in Model)
                 {
-                    <tr>
-                        <td> @categorie.CategoriesId</td>
-                        <td>@categorie.CategoryName</td>
-                        <td>@categorie.Description</td>
-                    </tr>
-                }
-
+                <tr>
+                    <td> @categorie.CategoryID</td>
+                    <td>@categorie.CategoryName</td>
+                    <td>@categorie.Description</td>
+                    <!-- OTRA MANERA SERÍA ASÍ, PERO NO PODRÍA PREGUNTAR SI QUIERE CONFIRMAR EL BORRADO, PARA ESO MEJOR USAR OTRA VISTA EN EL DELETE
+        <td id="Delete" onclick="confirmationDelete">@Html.ActionLink("Delete", "Delete", "Categories",new { id = categorie.CategoryID }, new { @class = "btn btn-danger"})</td>
+    -->
+                    <!--
+                        <td id=@categorie.CategoryID class="btn btn-primary" onclick="confirmationDelete(this)">Delete</td>
+                        <td id="edit" + @categorie.CategoryID class="btn btn-info" onclick="edit(this)">Edith</td>
+                     -->
+                    <td>
+                        <button id=@categorie.CategoryID class="btn btn-danger" onclick="confirmationDelete(this)">Delete</button>
+                        <a class="btn btn-primary" href="~/Categories/Update/@categorie.CategoryID"> Update</a> <!--Otra manera para redirecciónar, será conveniente? o es mejor usar el Html.ActionLink?(averiguarlo)-->
+                    </td>
+                </tr>
+                 }
             </tbody>
         </table>
     </div>
-    
-
 </div>
+
+<script>
+    window.onload = start;
+    function start() {
+    };
+    const confirmationDelete = (e) => {
+        if (confirm("Estás seguro de borrar?")) {
+            location.href = "/Categories/Delete/" + e.id;
+        } else {
+            console.log("Me quedo en la misma vista.");
+        }
+    }
+</script>
