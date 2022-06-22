@@ -1,0 +1,47 @@
+﻿@model List<Lab.EF.MVC2.Models.RickMortyView>
+@{
+    ViewBag.Title = "API RICK AND MORTY";
+}
+
+<div class="text-center">
+    <h1>Listado de Personajes</h1>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+    <div class="col-sm-6 col-md-4 cards" id="@item.id">
+        <div class="thumbnail card">
+            <img src=@item.image alt="PROBLEMAS">
+            <div class="caption text-center">
+                <h3>@item.name</h3>
+                <div class="datos" style="display: none;">
+                    <p>@item.status</p>
+                    <p>@item.species</p>
+                    <p>@item.type</p>
+                    <p>@item.gender</p>
+                </div>
+                <input type="checkbox" id="btn-modal">
+                <label for="btn-modal" class="lbl-modal" >Ver Más</label>
+                <div class="modal">
+                    <div class="contenedor">
+                        <header>¡Bienvenidos!</header>
+                        <label for="btn-modal">X</label>
+                        <div class="contenido">
+                            <h3>@item.name</h3>
+                            <p>Status  :  @item.status</p>
+                            <p>species : @item.species</p>
+                            <p>Gender  :  @item.gender</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    }
+</div>
+
+
+

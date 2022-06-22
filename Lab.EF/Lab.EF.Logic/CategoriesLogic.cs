@@ -40,6 +40,7 @@ namespace Lab.EF.Logic
             if(categorieUpdate == null) throw new IdCategorieException();
             //se podría usar AUTOMAPPERS ? (AVERIGUARLO)
             categorieUpdate.CategoryID = categorie.CategoryID;
+            categorieUpdate.CategoryName = categorie.CategoryName;
             categorieUpdate.Description = categorie.Description;
             context.SaveChanges();
         }

@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace Lab.EF.MVC2.Models
+namespace Lab.EF.WebApi.Models
 {
-    public class CategoriesView
+    public class CategorieView
     {
         public int CategoryID { get; set; }
-        [Required]
-        [StringLength(15)]
+
         public string CategoryName { get; set; }
         public string Description { get; set; }
     }
