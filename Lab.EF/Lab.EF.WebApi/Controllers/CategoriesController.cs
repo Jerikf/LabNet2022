@@ -2,15 +2,19 @@
 using Lab.EF.Entities;
 using Lab.EF.Logic;
 using Lab.EF.WebApi.Models;
+using Microsoft.AspNetCore.Cors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
+using EnableCorsAttribute = System.Web.Http.Cors.EnableCorsAttribute;
 
 namespace Lab.EF.WebApi.Controllers
 {
+    [EnableCors(origins: "https://localhost:44377", headers: "*", methods: "*")]
     public class CategoriesController : ApiController
     {
         CategoriesLogic categoriesLogic = new CategoriesLogic();
