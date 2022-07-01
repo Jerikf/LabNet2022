@@ -1,0 +1,26 @@
+<h1 class="text-center">Create Categorie</h1>
+
+<div class="container d-md-flex justify-content-center">
+
+  <form [formGroup]="form" (ngSubmit)="OnSubmit()" class ="col-md-6">
+    <div class="formGroup">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" formControlName = "name" class="form-control" maxlength="15">
+    </div>
+
+    <div class="formGroup">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" formControlName = "description" class="form-control">
+    </div>
+
+    <div class="mt-3">
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Create</button>
+        <button class="btn btn-secondary mx-3" (click)="Volver()" >Close</button>
+    </div>
+
+</form>
+
+</div>
+
+  
+

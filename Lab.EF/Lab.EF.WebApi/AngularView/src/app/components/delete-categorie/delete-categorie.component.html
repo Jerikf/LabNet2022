@@ -1,0 +1,14 @@
+<h2>Estás Seguro de Eliminar la Siguiente Categoría : </h2>
+<div class="form-group">
+    <label for="id">Id : </label>
+    <input type="text" [(ngModel)] = "id" class="mx-2" disabled="true">
+  
+    <label for="Name">Name : </label>
+    <input type="text" [(ngModel)] = "name" class="mx-2" disabled="true">
+  
+    <label for="Description">Description : </label>
+    <input type="text" [(ngModel)] = "description" class="mx-2" disabled="true" >
+
+    <button class="btn btn-danger mx-3" (click)="Delete()">SI</button>
+    <button class="btn btn-primary" (click)="Volver()">NO</button>
+</div>
